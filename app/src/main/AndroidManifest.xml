@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.splashscreenlotteanimation">
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/application_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SplashScreenLotteAnimation">
+        <activity
+            android:name=".RiskAssessment"
+            android:exported="false" />
+        <activity
+            android:name=".Employee_Pages.ApplyLeave"
+            android:exported="false" />
+
+        <activity
+            android:name=".Manager_Pages.ViewLeave"
+            android:exported="false" />
+
+        <activity
+            android:name=".ViewProfile"
+            android:exported="false" />
+        <activity
+            android:name=".SendMail"
+            android:exported="false" />
+        <activity
+            android:name=".ViewDirectory"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEmployee"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteEmployee"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Pages.AddEmployee"
+            android:exported="false" />
+
+        <activity
+            android:name=".UserAuthenticated"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Manager_Pages.ManagerDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Manager_Pages.publish_notice"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".Manager_Pages.view_timesheet"
+            android:exported="false"
+            android:noHistory="true" />
+
+        <activity
+            android:name=".Employee_Pages.EmployeeDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Employee_Pages.fill_timesheet"
+            android:exported="false" />
+
+        <activity
+            android:name=".Employee_Pages.view_notice"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".Admin_Pages.AdminDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".SplashActivityFirstScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

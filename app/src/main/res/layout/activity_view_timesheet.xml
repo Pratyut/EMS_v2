@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Manager_Pages.view_timesheet">
+
+    <!--EditText for adding employee name-->
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription27"
+        android:layout_width="278dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime27"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription25" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription24"
+        android:layout_width="280dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime24"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription6" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription26"
+        android:layout_width="280dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime26"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription24" />
+
+    <TextView
+        android:id="@+id/idEdtTime25"
+        android:layout_width="86dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime26" />
+
+    <TextView
+        android:id="@+id/idEdtTime26"
+        android:layout_width="85dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime24" />
+
+    <TextView
+        android:id="@+id/idEdtTime27"
+        android:layout_width="86dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime25" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription25"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime25"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription26" />
+
+    <TextView
+        android:id="@+id/idEdtTime24"
+        android:layout_width="85dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime6" />
+
+    <TextView
+        android:id="@+id/idEdtTime4"
+        android:layout_width="85dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime5" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription4"
+        android:layout_width="280dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime4"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription5" />
+
+    <TextView
+        android:id="@+id/idEdtTime5"
+        android:layout_width="85dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtDate" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription5"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime5"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtDate" />
+
+    <TextView
+        android:id="@+id/idEdtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Date (12.11.2021)"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--EditText for adding employee phone-->
+
+    <!--EditText for adding employee address-->
+
+    <!--Button for adding data to Firebase-->
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription6"
+        android:layout_width="278dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime6"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription7" />
+
+    <TextView
+        android:id="@+id/idEdtTime6"
+        android:layout_width="85dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime7" />
+
+    <TextView
+        android:id="@+id/idEdtTaskDescription7"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:hint="Task Description (Design)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toEndOf="@+id/idEdtTime7"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTaskDescription4" />
+
+    <TextView
+        android:id="@+id/idEdtTime7"
+        android:layout_width="86dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Time (11:00 - 12:00)"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEdtTime4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

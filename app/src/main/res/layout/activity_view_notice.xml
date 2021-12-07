@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Employee_Pages.view_notice">
+
+    <!--EditText for adding employee name-->
+
+    <!--EditText for adding employee phone-->
+    <TextView
+        android:id="@+id/idEdtSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Subject"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textStyle="bold" />
+
+    <!--EditText for adding employee address-->
+    <TextView
+        android:id="@+id/idEdtBody"
+        android:layout_width="395dp"
+        android:layout_height="104dp"
+        android:layout_below="@+id/idEdtSubject"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Body"
+        android:inputType="textPostalAddress" />
+
+    <!--Button for adding data to Firebase-->
+
+</RelativeLayout>

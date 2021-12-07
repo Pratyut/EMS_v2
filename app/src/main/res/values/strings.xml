@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Application</string>
+    <string name="hello_there_welcome_back">Hello there, Welcome Back!</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="e_mail_address">E-mail Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_here_send_an_email_to_admin_mail_id_requesting_your_credentials">New here? Click below to send an email to application admin requesting your credentials</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="update_employee">Update Employee</string>
+    <string name="delete_employee">Delete Employee</string>
+    <string name="view_directory">Organization Directory</string>
+    <string name="employee_id">Employee ID</string>
+    <string name="name">Full Name</string>
+    <string name="designation">Designation</string>
+    <string name="send_mail">Send Mail</string>
+    <string name="textview">TextView</string>
+    <string name="view_profile">Profile</string>
+    <string name="notice_board">Notice Board</string>
+    <string name="access_timesheet">Access Timesheet</string>
+    <string name="approve_leave_application">Approve Leave Application</string>
+    <string name="covid_19_risk_assessment">COVID-19 Risk Assessment</string>
+    <string name="leave_application">Leave Application</string>
+    <string name="fill_timesheet">Fill Timesheet</string>
+</resources>

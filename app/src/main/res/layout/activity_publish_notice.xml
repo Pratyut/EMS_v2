@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Manager_Pages.publish_notice">
+
+<!--EditText for adding employee name-->
+<EditText
+    android:id="@+id/idEdtReceiver"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:hint="To"
+    android:importantForAutofill="no"
+    android:inputType="textPersonName" />
+
+<!--EditText for adding employee phone-->
+<EditText
+    android:id="@+id/idEdtSubject"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/idEdtReceiver"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:hint="Subject"
+    android:importantForAutofill="no"
+    android:inputType="textPersonName" />
+
+<!--EditText for adding employee address-->
+<EditText
+    android:id="@+id/idEdtBody"
+    android:layout_width="395dp"
+    android:layout_height="104dp"
+    android:layout_below="@+id/idEdtSubject"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:hint="Body"
+    android:inputType="textPostalAddress" />
+
+<!--Button for adding data to Firebase-->
+<Button
+    android:id="@+id/idBtnSendData"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/idEdtBody"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:text="Publish"
+    android:textAllCaps="false" />
+
+</RelativeLayout>

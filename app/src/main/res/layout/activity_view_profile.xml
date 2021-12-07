@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewProfile"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:padding="20dp"
+        android:background="@color/aliceblue">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/male_avatar"
+            android:layout_centerVertical="true"
+            android:contentDescription="Profile"/>
+
+        <ImageView
+            android:id="@+id/profile_image_female"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="55dp"
+            android:src="@drawable/female_avatar"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/view_profile"/>
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:fontFamily="@font/bungee"
+            android:layout_toRightOf="@id/profile_image_female"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:fontFamily="@font/bungee"
+            android:layout_alignBottom="@id/name_text"
+            android:layout_toRightOf="@id/profile_image_female"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:includeFontPadding="false"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@drawable/rounded_corners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="-40dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Employee ID"
+            android:layout_marginBottom="20dp"
+            app:boxStrokeColor="@color/aquamarine">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_etext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text=""
+                android:paddingStart="10dp"
+                android:drawableLeft="@drawable/ic_outline_123_24"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:layout_marginBottom="20dp"
+            app:prefixText="">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_etext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:paddingStart="10dp"
+                android:drawableLeft="@drawable/ic_outline_person_24" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email address"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mail_etext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:paddingStart="10dp"
+                android:drawableLeft="@drawable/ic_email_svg"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:layout_marginBottom="20dp"
+            app:prefixText="+91">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_etext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:inputType="phone"
+                android:drawableLeft="@drawable/ic_outline_phone_24" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of Birth"
+            android:layout_marginBottom="20dp"
+            app:endIconDrawable="@drawable/ic_outline_calendar_month_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/birth_etext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:text=""
+                android:paddingStart="10dp"
+                android:drawableLeft="@drawable/ic_outline_calendar_month_24"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/password_change"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whitesmoke"
+                android:text="Change Password?"
+                android:elevation="0dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/certificate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/whitesmoke"
+                android:text="Upload Vaccination Certification"
+                android:elevation="0dp"/>
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Save Changes"
+            android:fontFamily="@font/bungee"
+            android:background="@color/aliceblue" />
+    </LinearLayout>
+</LinearLayout>
