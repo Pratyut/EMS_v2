@@ -93,21 +93,23 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String email_key=email.replace("@","at").replace(".","dot");
-                                for(DataSnapshot postsnapShot: snapshot.getChildren())
-                                {
-                                    Log.d("Content----",postsnapShot.getKey().toString()+"====="+postsnapShot.getValue().toString());
-                                    if(email_key.trim().equalsIgnoreCase(postsnapShot.getKey().toString().trim()))
-                                    {
-                                        String role=postsnapShot.getValue().toString();
-                                        if(role.trim().equalsIgnoreCase("E"))
-                                        {  setDashboard_number("1");}
+                                for(DataSnapshot postsnapShot: snapshot.getChildren()) {
+                                    Log.d("Content----", postsnapShot.getKey().toString() + "=====" + postsnapShot.getValue().toString());
+                                    if (email_key.trim().equalsIgnoreCase(postsnapShot.getKey().toString().trim())) {
+                                        String role = postsnapShot.getValue().toString();
+                                        if (role.trim().equalsIgnoreCase("E")) {
+                                            setDashboard_number("1");
+                                        }
 //                                            dashboard_number="1";
-                                        if(role.trim().equalsIgnoreCase("M"))
-                                        {  setDashboard_number("2");}
-                                        if(role.trim().equalsIgnoreCase("A"))
-                                        {  setDashboard_number("0");}
+                                        if (role.trim().equalsIgnoreCase("M")) {
+                                            setDashboard_number("2");
+                                        }
+                                        if (role.trim().equalsIgnoreCase("A")) {
+                                            setDashboard_number("0");
+                                        }
+                                        break;
                                     }
-
+                                }
                                     if(!getDashboard_number().equalsIgnoreCase("-1")) {
                                         Intent intent = new Intent(LoginActivity.this, UserAuthenticated.class);
                                         intent.putExtra("Dashboard", dashboard_number);
@@ -115,25 +117,20 @@ public class LoginActivity extends AppCompatActivity {
                                         startActivity(intent);
                                         finish();
                                     }
-                                    if(getDashboard_number().equalsIgnoreCase("-1")) {
+                                    else if(getDashboard_number().equalsIgnoreCase("-1")) {
                                         Toast.makeText(LoginActivity.this, "Particular user not found, Please try again", Toast.LENGTH_SHORT).show();
                                     }
                                     else{
                                     }
 
-
-
-
-
 //                        Log.d("Content----",postsnapShot.toString()+"--------"+postsnapShot.getValue().toString());
-                                }
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {                            }
                         });
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Please re-enter your credentials!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please check your credentials!!", Toast.LENGTH_LONG).show();
                     }
                 });
             }

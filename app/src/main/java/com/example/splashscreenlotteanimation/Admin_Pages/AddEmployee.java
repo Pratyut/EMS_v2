@@ -38,6 +38,8 @@ public class AddEmployee extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
+    int register_success=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,51 +100,68 @@ public class AddEmployee extends AppCompatActivity {
                     if (!task.isSuccessful()) {
                         Toast.makeText(AddEmployee.this.getApplicationContext(), "SignUp unsuccessful: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
+                        setRegister_success(1);
                         //Add employee node to database
                         if (item.equals("Employee")) {
                             databaseReference = firebaseDatabase.getReference("Employee");
                             Employee object = new Employee(email_address,name, contact_num,id , supervisor_id);
-                            databaseReference.addValueEventListener(new ValueEventListener() {
+                            databaseReference.child(id).setValue(object);
+                            Toast.makeText(getApplicationContext(), "Employee Added.", Toast.LENGTH_LONG).show();
+                            /*databaseReference.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    databaseReference.child(id).setValue(object);
+ *//*                                   databaseReference.child(id).setValue(object);
                                     Toast.makeText(getApplicationContext(), "Employee Added.", Toast.LENGTH_LONG).show();
-                                }
+ *//*                               }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     Toast.makeText(getApplicationContext(), "Employee not added.", Toast.LENGTH_LONG).show();
                                 }
-                            });
+                            });*/
+
+
                         } else {
+
                             databaseReference = firebaseDatabase.getReference("Manager");
                             Manager object = new Manager(email_address,name, contact_num, id);
-                            databaseReference.addValueEventListener(new ValueEventListener() {
+                            databaseReference.child(id).setValue(object);
+                            Toast.makeText(getApplicationContext(), "Manager Added.", Toast.LENGTH_LONG).show();
+
+                            /*databaseReference.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    databaseReference.child(id).setValue(object);
+   *//*                                 databaseReference.child(id).setValue(object);
                                     Toast.makeText(getApplicationContext(), "Manager Added.", Toast.LENGTH_LONG).show();
-                                }
+   *//*                             }
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     Toast.makeText(getApplicationContext(), "Manager not added.", Toast.LENGTH_LONG).show();
                                 }
                             });
+*/
                         }
 
 
 // Add the details to Role node as well
-                        DatabaseReference db=FirebaseDatabase.getInstance().getReference("Role");
                         String curated_email=email_address.replace("@","at").replace(".","dot");
 
-                        db.addValueEventListener(new ValueEventListener() {
+                        DatabaseReference db=FirebaseDatabase.getInstance().getReference("Role");
+                        db.child(curated_email).setValue(String.valueOf(item.charAt(0)));
+
+                        if(getRegister_success()==1)
+                        {
+                            finish();
+                        }
+//                        Toast.makeText(AddEmployee.this, "Employee Added..", Toast.LENGTH_SHORT).show();
+
+              /*          db.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                db.child(curated_email).setValue(String.valueOf(item.charAt(0)));
-                                Toast.makeText(AddEmployee.this, "Employee Added..", Toast.LENGTH_SHORT).show();
                                 //starting a main activity.
 //                                startActivity(new Intent(AddEmployee.this, Admin_dashboard.class));
-                                finish();
+
+//                                finish();
 
                             }
 
@@ -151,7 +170,7 @@ public class AddEmployee extends AppCompatActivity {
 
                             }
                         });
-
+*/
 
 
                     }
@@ -159,4 +178,14 @@ public class AddEmployee extends AppCompatActivity {
             }
         });
     }
+
+
+    public int getRegister_success() {
+        return register_success;
+    }
+
+    public void setRegister_success(int register_success) {
+        this.register_success = register_success;
+    }
+
 }

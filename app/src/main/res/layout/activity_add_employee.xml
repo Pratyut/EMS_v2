@@ -12,109 +12,178 @@
         android:stretchColumns="10"
         android:padding="10dp">
 
-        <EditText
-            android:id="@+id/id_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/employee_id"
-            android:inputType="text"
-            android:minHeight="48dp" />
-
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/layout_emp_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Employee Name"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_username"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Employee Name"
-                android:layout_marginTop="5dp"
-                android:inputType="text" />
+                android:inputType="text"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_emp_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Employee Email"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_id">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_emp_email"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Employee Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textPersonName" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_password"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtInLayoutRegPassword"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Set Password"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_name"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/black">
+            app:passwordToggleTint="@color/powderblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_password"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Type Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_password_again"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtInLayoutRegPassword_again"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Retype Password"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_name"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/black">
+            app:passwordToggleTint="@color/powderblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_password_again"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Retype Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
+
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_emp_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Employee ID"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_emp_id"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Employee Id"
-                android:inputType="number" />
+                android:inputType="number"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_supervisor_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Supervisor ID"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_SupervisorId"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Supervisor Id"
-                android:inputType="number" />
+                android:inputType="number"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_contact_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:hint="Contact Details"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_phone_num"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Contact No."
-                android:inputType="number" />
+                android:inputType="number"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +222,7 @@
             android:layout_marginTop="15dp"
             android:background="@color/powderblue"
             android:text="@string/add_employee"
-            android:textColor="#795548"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

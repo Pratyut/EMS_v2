@@ -3,6 +3,7 @@ package com.example.splashscreenlotteanimation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -45,10 +46,17 @@ public class UpdateEmployee extends AppCompatActivity {
         email_text = findViewById(R.id.email_text);
         email_address = Objects.requireNonNull(email_text.getText()).toString();
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference(item).child(id);
-
         update = findViewById(R.id.add_employee_button);
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference(item).child(id);
+
+            }
+        });
+
 
 
     }
