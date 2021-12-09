@@ -6,9 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Employee_Pages.view_notice">
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewNoticeList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     />
+
     <!--EditText for adding employee name-->
 
     <!--EditText for adding employee phone-->
+<!--
     <TextView
         android:id="@+id/idEdtSubject"
         android:layout_width="match_parent"
@@ -22,7 +30,7 @@
         android:inputType="textPersonName"
         android:textStyle="bold" />
 
-    <!--EditText for adding employee address-->
+    &lt;!&ndash;EditText for adding employee address&ndash;&gt;
     <TextView
         android:id="@+id/idEdtBody"
         android:layout_width="395dp"
@@ -34,7 +42,7 @@
         android:layout_marginBottom="10dp"
         android:hint="Body"
         android:inputType="textPostalAddress" />
+-->
 
-    <!--Button for adding data to Firebase-->
 
 </RelativeLayout>

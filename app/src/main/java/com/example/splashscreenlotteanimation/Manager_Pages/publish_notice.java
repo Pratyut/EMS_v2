@@ -2,18 +2,21 @@ package com.example.splashscreenlotteanimation.Manager_Pages;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.splashscreenlotteanimation.Pojo.Notice;
 import com.example.splashscreenlotteanimation.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
+import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,17 +44,17 @@ public class publish_notice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Publish Notice");
         setContentView(R.layout.activity_publish_notice);
 
         // initializing our edittext and button
-        ReceiverEdt = findViewById(R.id.idEdtReceiver);
+//        ReceiverEdt = findViewById(R.id.idEdtReceiver);
         SubjectEdt = findViewById(R.id.idEdtSubject);
         BodyEdt = findViewById(R.id.idEdtBody);
 
         // below line is used to get the
         // instance of our FIrebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
-
         // below line is used to get reference for our database.
         databaseReference = firebaseDatabase.getReference("Notice");
 
@@ -62,29 +65,32 @@ public class publish_notice extends AppCompatActivity {
         sendDatabtn = findViewById(R.id.idBtnSendData);
 
         // adding on click listener for our button.
-        sendDatabtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        sendDatabtn.setOnClickListener(v -> {
 
-                // getting text from our edittext fields.
-                String receiver = ReceiverEdt.getText().toString();
-                String subject = SubjectEdt.getText().toString();
-                String body = BodyEdt.getText().toString();
+            // getting text from our edittext fields.
+//            String receiver = ReceiverEdt.getText().toString();
+            String subject = SubjectEdt.getText().toString();
+            String body = BodyEdt.getText().toString();
 
-                // below line is for checking weather the
-                // edittext fields are empty or not.
-                if (TextUtils.isEmpty(receiver) && TextUtils.isEmpty(subject) && TextUtils.isEmpty(body)) {
-                    // if the text fields are empty
-                    // then show the below message.
-                    Toast.makeText(publish_notice.this, "Please add some data.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // else call the method to add
-                    // data to our database.
-                    addDatatoFirebase(receiver, subject, body);
-                }
+            // below line is for checking weather the
+            // edittext fields are empty or not.
+            if (/*TextUtils.isEmpty(receiver) &&*/ TextUtils.isEmpty(subject) && TextUtils.isEmpty(body)) {
+                // if the text fields are empty
+                // then show the below message.
+                Toast.makeText(publish_notice.this, "Please add some data.", Toast.LENGTH_SHORT).show();
+            } else {
+                // else call the method to add
+                // data to our database.
+//                addDatatoFirebase(/*receiver, */subject, body);
+                Notice temp=new Notice(subject,body);
+                Random random=new Random();
+                String user_email= FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+                String curated_email=user_email.replace("@","at").replace(".","dot");
+                databaseReference.child(curated_email+"_"+Integer.toString(random.nextInt(1100))).setValue(temp);
+                finish();
             }
         });
-}
+    }
 
 
     private void addDatatoFirebase(String receiver, String subject, String body) {

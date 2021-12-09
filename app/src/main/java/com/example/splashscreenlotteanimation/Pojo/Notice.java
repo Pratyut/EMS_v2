@@ -21,6 +21,17 @@ public class Notice
 
     }
 
+    public Notice(String receiver, String subject, String body) {
+        Receiver = receiver;
+        Subject = subject;
+        Body = body;
+    }
+
+    public Notice( String subject, String body) {
+        this.Receiver = null;
+        this.Subject = subject;
+        this.Body = body;
+    }
     // created getter and setter methods
     // for all our variables.
     public String getReceiver() {
