@@ -39,7 +39,7 @@ public class DeleteEmployee extends AppCompatActivity {
         list = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(/*"Employee"*/);
-        recyclerAdapter = new DeleteEmployeeListAdapter(list);
+        recyclerAdapter = new DeleteEmployeeListAdapter(DeleteEmployee.this,list);
         recyclerView.setLayoutManager(new LinearLayoutManager(DeleteEmployee.this));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -96,6 +96,7 @@ public class DeleteEmployee extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                recyclerAdapter.getFilter().filter(query);
                 return false;
             }
 

@@ -95,6 +95,14 @@ public class AddEmployee extends AppCompatActivity {
             {
                 Toast.makeText(AddEmployee.this, "Please check, password instances dont match", Toast.LENGTH_SHORT).show();
             }
+            else if (item==null)
+            {
+                Toast.makeText(AddEmployee.this, "Please select either of designations", Toast.LENGTH_SHORT).show();
+            }
+            else if (item.equals("Employee") && supervisor_id.isEmpty())
+            {
+                    Toast.makeText(AddEmployee.this, "An employee must have a supervisor", Toast.LENGTH_SHORT).show();
+            }
             else {
                 mAuth.createUserWithEmailAndPassword(email_address, password).addOnCompleteListener(AddEmployee.this, (OnCompleteListener) task -> {
                     if (!task.isSuccessful()) {
@@ -103,6 +111,7 @@ public class AddEmployee extends AppCompatActivity {
                         setRegister_success(1);
                         //Add employee node to database
                         if (item.equals("Employee")) {
+
                             databaseReference = firebaseDatabase.getReference("Employee");
                             Employee object = new Employee(email_address,name, contact_num,id , supervisor_id);
                             databaseReference.child(id).setValue(object);

@@ -151,12 +151,14 @@
             android:backgroundTint="@color/white"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            android:ellipsize="marquee"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_SupervisorId"
                 android:layout_width="match_parent"
+                android:hint="                          Ignore (If adding manager)"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
 

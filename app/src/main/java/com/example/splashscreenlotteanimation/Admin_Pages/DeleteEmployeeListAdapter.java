@@ -1,5 +1,6 @@
 package com.example.splashscreenlotteanimation.Admin_Pages;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,8 +16,11 @@ import com.example.splashscreenlotteanimation.Pojo.Employee;
 import com.example.splashscreenlotteanimation.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,16 +34,23 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmployeeListAdapter.ViewHolder>  implements Filterable{
 
     private static final String TAG = "RecyclerAdapter";
-  ArrayList<Employee> moviesList,moviesListAll;
+//    ArrayList<Employee> moviesList,moviesListAll;
+    Context ctx;
+    List<Employee> moviesList,moviesListFilter;
 
+
+    int is_manager_used=0;
 //    ArrayList<Employee> moviesListAll;
 
-    public DeleteEmployeeListAdapter(ArrayList<Employee> moviesList) {
+    public DeleteEmployeeListAdapter(Context context,List<Employee> moviesList) {
+        this.ctx=context;
         this.moviesList = moviesList;
-        this.moviesListAll=moviesList;
-        Log.d("filtered MvListCons", String.valueOf(moviesList.size()));
-        Log.d("filtered MvListCons", String.valueOf(moviesListAll.size()));
+        this.moviesListFilter=moviesList;
 
+        /*moviesListAll = new ArrayList<>();
+        moviesListAll.addAll(moviesList);*/
+        Log.d("filtered MvListCons", String.valueOf(moviesList.size()));
+        Log.d("filtered MvListCons", String.valueOf(moviesListFilter.size()));
     }
 
     @NonNull
@@ -53,25 +64,25 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.emp_id.setText("ID: "+moviesList.get(position).employee_id);
-        holder.emp_name.setText(moviesList.get(position).name);
-        if(moviesList.get(position).supervisor_id==null)
+        holder.emp_id.setText("ID: "+moviesListFilter.get(position).employee_id);
+        holder.emp_name.setText(moviesListFilter.get(position).name);
+        if(moviesListFilter.get(position).supervisor_id==null)
         {
             holder.supervisor_name.setText("");
             holder.emp_type.setText("Manager");
         }
         else {
-            Log.d("testing..", "Supervisor: "+ moviesList.get(position).supervisor_id);
-            Log.d("testing..", "Supervisor: "+ moviesList.get(position).supervisor_id.toString());
+            Log.d("testing..", "Supervisor: "+ moviesListFilter.get(position).supervisor_id);
+            Log.d("testing..", "Supervisor: "+ moviesListFilter.get(position).supervisor_id.toString());
 
-         holder.supervisor_name.setText("Supervisor: " + moviesList.get(position).supervisor_id);
+         holder.supervisor_name.setText("Supervisor: " + moviesListFilter.get(position).supervisor_id);
          holder.emp_type.setText("Employee");
         }
     }
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return moviesListFilter.size();
     }
 
 
@@ -108,44 +119,81 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
 
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Delete access of "+moviesList.get(getAdapterPosition()).name);
+                builder.setTitle("Delete access of "+moviesListFilter.get(getAdapterPosition()).name);
                 // Click on Recover and a email will be sent to your registered email id
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String emp_email_to_b_deleted = moviesList.get(getAdapterPosition()).email.toString().trim().replace("@", "at").replace(".", "dot");
-                        String emp_id_to_b_deleted = moviesList.get(getAdapterPosition()).employee_id.toString();
+                        setIs_manager_used(0);
+                        String emp_email_to_b_deleted = moviesListFilter.get(getAdapterPosition()).email.toString().trim().replace("@", "at").replace(".", "dot");
+                        String emp_id_to_b_deleted = moviesListFilter.get(getAdapterPosition()).employee_id.toString();
 
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-                        Log.d("Content---",db.child("Role").child(emp_email_to_b_deleted).toString());
-                        Log.d("Content---",db.child("Role").child(emp_email_to_b_deleted).getKey().toString());
-                        db.child("Role").child(emp_email_to_b_deleted).removeValue();
+
+                        //THis needs to be reviewed... and
+                        /*
+                        if(moviesListFilter.get(getAdapterPosition()).supervisor_id==null)
+                        {
+                            DatabaseReference db_temp=db.child("Employee");
+                            db_temp.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot ds: snapshot.getChildren())
+                                    {
+                                        Log.d("chrc",ds.child("supervisor_id").getValue(String.class));
+                                        Log.d("chrc",emp_id_to_b_deleted);
+                                        if(emp_id_to_b_deleted.trim().equalsIgnoreCase(ds.child("supervisor_id").getValue(String.class).trim()))
+                                        {
+                                            setIs_manager_used(1);
+                                            Log.d("chrc---setted value",String.valueOf(getIs_manager_used()));
+                                            break;
+                                        }
+                                    }
+
+                                    if(getIs_manager_used()==0)
+                                    {
+                                        db.child("Role").child(emp_email_to_b_deleted).removeValue();
+                                        db.child("Employee").child(emp_id_to_b_deleted).removeValue();
+                                        Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
+                                        setIs_manager_used(0);
+                                    }
+                                    else if (getIs_manager_used()==1)
+                                    {
+                                        Toast.makeText(ctx, "Failure. The user supervisor to atleast 1 employee.", Toast.LENGTH_SHORT).show();
+
+                                    }
 
 
-           /*             db.child("Role").child(emp_id_to_b_deleted).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-//                                    Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
-                                } else {
-//                                    Toast.makeText(view.getContext(), "Facing problem while deletion, please try again", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {  }
+                            });
+                        }
+                        else{
+                            db.child("Role").child(emp_email_to_b_deleted).removeValue();
+                            db.child("Employee").child(emp_id_to_b_deleted).removeValue();
+                            Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
+
+                        }
 */
 
-                        Log.d("Content---",db.child("Employee").child(emp_id_to_b_deleted).toString());
-                        Log.d("Content---",db.child("Employee").child(emp_id_to_b_deleted).getKey().toString());
-                        db.child("Employee").child(emp_id_to_b_deleted).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(view.getContext(), "Facing problem while deletion, please try again", Toast.LENGTH_SHORT).show();
+                            Log.d("chrc----getting value",String.valueOf(getIs_manager_used()));
+                            Log.d("Content---", db.child("Role").child(emp_email_to_b_deleted).toString());
+                            Log.d("Content---", db.child("Role").child(emp_email_to_b_deleted).getKey().toString());
+                            db.child("Role").child(emp_email_to_b_deleted).removeValue();
+                            Log.d("Content---", db.child("Employee").child(emp_id_to_b_deleted).toString());
+                            Log.d("Content---", db.child("Employee").child(emp_id_to_b_deleted).getKey().toString());
+                            db.child("Employee").child(emp_id_to_b_deleted).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(view.getContext(), "Facing problem while deletion, please try again", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+
                     }});
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -154,9 +202,6 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
                     }
                 });
                 builder.create().show();
-
-
-
             }
             else{}
         }
@@ -173,15 +218,17 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
         //Automatic on background thread
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
-            ArrayList<Employee> filteredList = new ArrayList<>();
+            /*ArrayList<Employee> filteredList = new ArrayList<>();*/
             Log.d("filteredList MovieList", String.valueOf(moviesList.size()));
-            Log.d("filteredList MvListAll", String.valueOf(moviesListAll.size()));
+            Log.d("filteredList MvListAll", String.valueOf(moviesListFilter.size()));
             Log.d("filteredList char_seq", String.valueOf(charSequence));
             if (charSequence == null || charSequence.length() == 0) {
-                filteredList.addAll(moviesListAll);
-                Log.d("filteredList IN 1case",String.valueOf(filteredList.size()));
+//                filteredList.addAll(moviesListAll);
+                moviesListFilter=moviesList;
+//                Log.d("filteredList IN 1case",String.valueOf(filteredList.size()));
             } else {
-                for (Employee temp_emp: moviesListAll) {
+                List<Employee> filteredList = new ArrayList<>();
+                for (Employee temp_emp: moviesList) {
                     if (temp_emp.employee_id.toString().toLowerCase().contains(charSequence.toString().toLowerCase())
                        || temp_emp.name.toString().toLowerCase().contains(charSequence.toString().toLowerCase()))
                     {
@@ -189,24 +236,37 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
                     }
                 }
                 Log.d("filteredList IN 2case",String.valueOf(filteredList.size()));
-
+                moviesListFilter=filteredList;
             }
 
             FilterResults filterResults = new FilterResults();
-            filterResults.values = filteredList;
-            Log.d("filtered list", String.valueOf(filteredList.size()));
+//            filterResults.values = filteredList;
+            filterResults.values = moviesListFilter;
+//            Log.d("filtered list", String.valueOf(filterResults.size()));
             return filterResults;
         }
 
         //Automatic on UI thread
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            moviesList.clear();
+            /*moviesList.clear();
             Log.d("filtered list publish", String.valueOf(filterResults.values.toString()));
             moviesList.addAll((Collection<? extends Employee>) filterResults.values);
+            notifyDataSetChanged();*/
+
+            moviesListFilter=(ArrayList<Employee>) filterResults.values;
             notifyDataSetChanged();
         }
     };
 
+
+
+    public int getIs_manager_used() {
+        return is_manager_used;
+    }
+
+    public void setIs_manager_used(int is_manager_used) {
+        this.is_manager_used = is_manager_used;
+    }
 
 }
