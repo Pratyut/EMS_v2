@@ -39,8 +39,6 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
     List<Employee> moviesList,moviesListFilter;
 
 
-    int is_manager_used=0;
-//    ArrayList<Employee> moviesListAll;
 
     public DeleteEmployeeListAdapter(Context context,List<Employee> moviesList) {
         this.ctx=context;
@@ -124,40 +122,39 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        setIs_manager_used(0);
                         String emp_email_to_b_deleted = moviesListFilter.get(getAdapterPosition()).email.toString().trim().replace("@", "at").replace(".", "dot");
                         String emp_id_to_b_deleted = moviesListFilter.get(getAdapterPosition()).employee_id.toString();
 
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
                         //THis needs to be reviewed... and
-                        /*
-                        if(moviesListFilter.get(getAdapterPosition()).supervisor_id==null)
-                        {
+                        if(moviesListFilter.get(getAdapterPosition()).supervisor_id.equals("")) {
                             DatabaseReference db_temp=db.child("Employee");
                             db_temp.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Boolean managerHasSubordinates = false;
                                     for(DataSnapshot ds: snapshot.getChildren())
                                     {
                                         Log.d("chrc",ds.child("supervisor_id").getValue(String.class));
                                         Log.d("chrc",emp_id_to_b_deleted);
                                         if(emp_id_to_b_deleted.trim().equalsIgnoreCase(ds.child("supervisor_id").getValue(String.class).trim()))
                                         {
-                                            setIs_manager_used(1);
-                                            Log.d("chrc---setted value",String.valueOf(getIs_manager_used()));
+                                            managerHasSubordinates = true;
+                                            Log.d("chrc---setted value",String.valueOf(managerHasSubordinates));
                                             break;
                                         }
                                     }
 
-                                    if(getIs_manager_used()==0)
+                                    if(!managerHasSubordinates)
                                     {
                                         db.child("Role").child(emp_email_to_b_deleted).removeValue();
                                         db.child("Employee").child(emp_id_to_b_deleted).removeValue();
+                                        db.child("Manager").child(emp_id_to_b_deleted).removeValue();
+
                                         Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
-                                        setIs_manager_used(0);
                                     }
-                                    else if (getIs_manager_used()==1)
+                                    else if (managerHasSubordinates)
                                     {
                                         Toast.makeText(ctx, "Failure. The user supervisor to atleast 1 employee.", Toast.LENGTH_SHORT).show();
 
@@ -168,16 +165,16 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {  }
                             });
-                        }
-                        else{
+                        } else {
                             db.child("Role").child(emp_email_to_b_deleted).removeValue();
                             db.child("Employee").child(emp_id_to_b_deleted).removeValue();
+                            db.child("Manager").child(emp_id_to_b_deleted).removeValue();
+
                             Toast.makeText(view.getContext(), "Employee Record deleted", Toast.LENGTH_SHORT).show();
 
                         }
-*/
 
-                            Log.d("chrc----getting value",String.valueOf(getIs_manager_used()));
+//                            Log.d("chrc----getting value",String.valueOf(managerIs));
                             Log.d("Content---", db.child("Role").child(emp_email_to_b_deleted).toString());
                             Log.d("Content---", db.child("Role").child(emp_email_to_b_deleted).getKey().toString());
                             db.child("Role").child(emp_email_to_b_deleted).removeValue();
@@ -258,15 +255,4 @@ public class DeleteEmployeeListAdapter extends RecyclerView.Adapter<DeleteEmploy
             notifyDataSetChanged();
         }
     };
-
-
-
-    public int getIs_manager_used() {
-        return is_manager_used;
-    }
-
-    public void setIs_manager_used(int is_manager_used) {
-        this.is_manager_used = is_manager_used;
-    }
-
 }
