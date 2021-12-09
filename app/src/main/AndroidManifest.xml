@@ -42,9 +42,6 @@
             android:name=".SendMail"
             android:exported="false" />
         <activity
-            android:name=".ViewDirectory"
-            android:exported="false" />
-        <activity
             android:name=".UpdateEmployee"
             android:exported="false" />
         <activity

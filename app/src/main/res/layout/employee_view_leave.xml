@@ -25,71 +25,117 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="75dp"
+                    android:layout_height="90dp"
                     android:orientation="vertical">
-                <TextView
-                    android:backgroundTint="@color/cardview_light_background"
-                    android:id="@+id/viewLeavestartDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10/12"
-                    android:textStyle="bold"
-                    android:layout_marginStart="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:paddingTop="@dimen/cardview_default_elevation"
-                    android:paddingBottom="@dimen/cardview_default_elevation"
-                    android:paddingRight="@dimen/cardview_default_elevation"
-                    android:paddingLeft="@dimen/cardview_default_elevation"/>
 
                     <TextView
+                        android:id="@+id/viewLeavestartDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
                         android:backgroundTint="@color/cardview_light_background"
+                        android:paddingBottom="@dimen/cardview_default_elevation"
+                        android:paddingLeft="@dimen/cardview_default_elevation"
+                        android:paddingRight="@dimen/cardview_default_elevation"
+                        android:paddingTop="@dimen/cardview_default_elevation"
+                        android:text="10/12"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/cardview_light_background"
+                        android:paddingBottom="@dimen/cardview_default_elevation"
+                        android:paddingLeft="@dimen/cardview_default_elevation"
+                        android:paddingRight="@dimen/cardview_default_elevation"
+                        android:paddingTop="@dimen/cardview_default_elevation"
+                        android:text="To"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
                         android:id="@+id/LeaveEndDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11/12"
-                        android:textStyle="bold"
                         android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/cardview_light_background"
+                        android:paddingBottom="@dimen/cardview_default_elevation"
+                        android:paddingLeft="@dimen/cardview_default_elevation"
+                        android:paddingRight="@dimen/cardview_default_elevation"
+                        android:paddingTop="@dimen/cardview_default_elevation"
+                        android:text="11/12"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:paddingTop="@dimen/cardview_default_elevation"
-                        android:paddingBottom="@dimen/cardview_default_elevation"
-                        android:paddingRight="@dimen/cardview_default_elevation"
-                        android:paddingLeft="@dimen/cardview_default_elevation"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical">
                 <TextView
-                    android:backgroundTint="@color/cardview_light_background"
                     android:id="@+id/viewLeaveSubject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LeaveSubject"
-                    android:ellipsize="marquee"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:paddingTop="@dimen/cardview_default_elevation"
+                    android:backgroundTint="@color/cardview_light_background"
+                    android:ellipsize="marquee"
                     android:paddingBottom="@dimen/cardview_default_elevation"
+                    android:layout_marginRight="5dp"
                     android:paddingRight="@dimen/cardview_default_elevation"
-                    android:paddingLeft="@dimen/cardview_default_elevation"/>
+                    android:layout_marginTop="5dp"
+                    android:text="LeaveSubject"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/black"
+        android:layout_below="@id/token_symptoms"/>
 
+    <TextView
+        android:id="@+id/viewLeaveStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="14dp"
+        android:backgroundTint="@color/cardview_light_background"
+        android:ellipsize="marquee"
+        android:paddingBottom="@dimen/cardview_default_elevation"
+
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Status"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+</LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/removeLeaveRequest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:backgroundTint="@color/white"
                 android:forceHasOverlappingRendering="true"
-                android:padding="15dp"
                 android:gravity="center"
-                android:layout_centerVertical="true"
-                android:paddingLeft="@dimen/cardview_default_elevation"
-                android:paddingTop="@dimen/cardview_default_elevation"
-                android:paddingRight="@dimen/cardview_default_elevation"
                 android:paddingBottom="@dimen/cardview_default_elevation"
+                android:paddingLeft="@dimen/cardview_default_elevation"
+                android:paddingRight="@dimen/cardview_default_elevation"
+                android:paddingTop="@dimen/cardview_default_elevation"
                 android:text="X"
                 android:textColor="@color/black"
                 android:textSize="15sp"

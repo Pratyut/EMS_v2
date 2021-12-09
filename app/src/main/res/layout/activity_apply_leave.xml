@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Employee_Pages.ApplyLeave">
 
-    <EditText
-        android:id="@+id/fromDate"
-        android:layout_width="149dp"
-        android:layout_height="48dp"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="35dp"
+    app:cardElevation="16dp"
+    app:cardCornerRadius="10dp">
 
-    <EditText
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
         android:id="@+id/editTextTextfrom"
-        android:layout_width="65dp"
-        android:layout_height="48dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:clickable="false"
         android:cursorVisible="false"
         android:ems="10"
@@ -34,18 +34,51 @@
         android:text="From"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fromDate"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027" />
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/fromDate"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:clickable="false"
+        android:layout_marginStart="20dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textAlignment="center" />
+
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="35dp"
+        app:cardElevation="16dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/editTextTextto"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="To"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/toDate"
-        android:layout_width="149dp"
-        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:clickable="false"
         android:cursorVisible="false"
         android:focusable="false"
@@ -59,25 +92,10 @@
         app:layout_constraintVertical_bias="0.118"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/editTextTextto"
-        android:layout_width="65dp"
-        android:layout_height="48dp"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="To"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toDate"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118" />
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+<!--
     <EditText
         android:id="@+id/editTextTextSubject"
         android:layout_width="100dp"
@@ -108,7 +126,63 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31"
         tools:ignore="SpeakableTextPresentCheck" />
+-->
 
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/subject_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="32dp"
+        android:hint="SUBJECT"
+        app:layout_constraintTop_toBottomOf="@id/editTextTextto"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:ellipsize="marquee"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:maxHeight="60dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:textStyle="bold"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Reason"
+        app:layout_constraintTop_toBottomOf="@id/subject_container"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:ellipsize="marquee"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/reason"
+            android:layout_width="match_parent"
+            android:maxHeight="180dp"
+            android:textSize="16dp"
+            android:scrollbars="vertical"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:textStyle="bold"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<!--
     <EditText
         android:id="@+id/editTextTextReason"
         android:layout_width="100dp"
@@ -143,17 +217,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.662"
         tools:ignore="SpeakableTextPresentCheck" />
+-->
 
     <Button
         android:id="@+id/applyLeaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apply Leave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        android:layout_gravity="center_horizontal" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+</ScrollView>

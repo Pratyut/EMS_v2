@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class ApplyLeave extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_leave);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Apply Leave");
 
         mAuth=FirebaseAuth.getInstance();
 //        if(mAuth.getCurrentUser().getEmail()=null) {

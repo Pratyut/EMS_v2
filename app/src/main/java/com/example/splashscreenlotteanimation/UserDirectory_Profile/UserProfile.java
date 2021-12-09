@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.splashscreenlotteanimation.Pojo.Employee;
 import com.example.splashscreenlotteanimation.R;
 
+import java.util.Objects;
+
 public class UserProfile extends AppCompatActivity {
 
     Employee user;
@@ -20,6 +22,7 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile View");
         user = getIntent().getParcelableExtra("user");
         relativeName = findViewById(R.id.name_profile);
         relativePhoneNumber = findViewById(R.id.phone_profile);

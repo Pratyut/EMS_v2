@@ -18,12 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.splashscreenlotteanimation.Admin_Pages.AdminDashboard;
 import com.example.splashscreenlotteanimation.LoginActivity;
 import com.example.splashscreenlotteanimation.Pojo.Manager;
 import com.example.splashscreenlotteanimation.R;
 import com.example.splashscreenlotteanimation.UserDirectory_Profile.UserList;
-import com.example.splashscreenlotteanimation.ViewDirectory;
 import com.example.splashscreenlotteanimation.ViewProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -14,10 +14,14 @@ import android.widget.Toast;
 import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeDashboard;
 import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeViewLeave;
 import com.example.splashscreenlotteanimation.Pojo.Leave;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,11 +51,43 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
         holder.leaveStart.setText(leave.getFrom().substring(0,leave.getFrom().lastIndexOf('/')));
         holder.leaveEnd.setText(leave.getTo().substring(0,leave.getFrom().lastIndexOf('/')));
         holder.viewleavesubject.setText(leave.getSubject());
+        holder.leaveStatus.setText("Status: "+leave.getStatus());
         holder.removeleaverequest.setOnClickListener(v -> {
             Log.d("Leaves",leave.leave_number);
-            database.child(leave.leave_number).removeValue();
-            Toast.makeText(v.getContext(), "Leave Removed successfully. Please refresh the page", Toast.LENGTH_SHORT).show();
-            v.getContext().startActivity(new Intent(v.getContext(), EmployeeDashboard.class));
+            Log.d("Leaves if condition",String.valueOf(database.child(leave.leave_number).child("status").equals("pending")));
+            Log.d("Leaves keys",String.valueOf(database.child(leave.leave_number).getKey()));
+
+            database.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 String status= snapshot.child(leave.leave_number).child("status").getValue(String.class);
+                 if(String.valueOf("pending").equalsIgnoreCase(Objects.requireNonNull(status).trim()))
+                 {
+                     database.child(leave.leave_number).removeValue();
+                     Toast.makeText(v.getContext(), "Leave Removed successfully. Please refresh the page", Toast.LENGTH_SHORT).show();
+                     v.getContext().startActivity(new Intent(v.getContext(), EmployeeDashboard.class));
+                 }
+                 else
+                 {
+                     Toast.makeText(v.getContext(), "Processed leaves cannot be removed.", Toast.LENGTH_SHORT).show();
+                 }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+/*
+            if(database.child(leave.leave_number).child("status").equals("pending")) {
+                database.child(leave.leave_number).removeValue();
+                Toast.makeText(v.getContext(), "Leave Removed successfully. Please refresh the page", Toast.LENGTH_SHORT).show();
+                v.getContext().startActivity(new Intent(v.getContext(), EmployeeDashboard.class));
+            }
+            else{
+                Toast.makeText(v.getContext(), "Processed leaves cannot be removed.", Toast.LENGTH_SHORT).show();
+            }
+*/
+
             /*Intent i = new Intent(v.getContext(), ViewLeave.class);
             context.startActivity(i);*/
         });
@@ -65,7 +101,7 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
 
     public static class EmployeeViewLeaveViewHolder extends RecyclerView.ViewHolder{
 
-        TextView viewleavesubject, leaveStart, leaveEnd;
+        TextView viewleavesubject, leaveStart, leaveEnd,leaveStatus;
         Button removeleaverequest;
 
         public EmployeeViewLeaveViewHolder(@NonNull View itemView) {
@@ -74,7 +110,7 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
             leaveStart=itemView.findViewById(R.id.viewLeavestartDate);
             leaveEnd=itemView.findViewById(R.id.LeaveEndDate);
             removeleaverequest = itemView.findViewById(R.id.removeLeaveRequest);
-
+            leaveStatus=itemView.findViewById(R.id.viewLeaveStatus);
         }
     }
 }

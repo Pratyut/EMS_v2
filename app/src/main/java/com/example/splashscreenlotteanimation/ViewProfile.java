@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -96,6 +97,10 @@ public class ViewProfile extends AppCompatActivity {
                                 if (employee.getEmail().equals(user.getEmail())) {
                                     name.setText(employee.name.toUpperCase(Locale.ROOT));
                                     name_etxt.setText(employee.name);
+                                    name_etxt.setEnabled(false); //---- checking a functionality
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        name_etxt.setFocusable(View.NOT_FOCUSABLE);
+                                    }
                                     id.setText(employee.employee_id);
                                     gender.setText(employee.gender);
                                     email.setText(employee.email);
@@ -129,6 +134,10 @@ public class ViewProfile extends AppCompatActivity {
                                 if (manager.getEmail().equals(user.getEmail())) {
                                     name.setText(manager.name.toUpperCase(Locale.ROOT));
                                     name_etxt.setText(manager.name);
+                                    name_etxt.setEnabled(false); //---- checking a functionality
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        name_etxt.setFocusable(View.NOT_FOCUSABLE);
+                                    }
                                     id.setText(manager.employee_id);
                                     gender.setText(manager.gender);
                                     email.setText(manager.email);

@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,7 +50,7 @@ public class fill_timesheet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_timesheet);
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Fill Timesheet");
         // initializing our edittext and button
         DateEdt = findViewById(R.id.idEdtDate);
         TimeEdt1 = findViewById(R.id.idEdtTime5);
