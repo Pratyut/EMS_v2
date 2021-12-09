@@ -11,12 +11,13 @@ public class Leave implements Parcelable {
     public String reason;
     public String subject;
     public String status;
+    public String leave_number;
 
     public Leave(){
 
     }
 
-    public Leave(String userid,String approver_id, String from, String to, String reason, String subject ) {
+    public Leave(String userid,String approver_id, String from, String to, String reason, String subject, String leave_number) {
         this.userid = userid;
         this.approver_id=approver_id;
         this.from = from;
@@ -24,6 +25,7 @@ public class Leave implements Parcelable {
         this.reason = reason;
         this.subject = subject;
         this.status = "pending";
+        this.leave_number = leave_number;
     }
 
     protected Leave(Parcel in) {
@@ -33,6 +35,7 @@ public class Leave implements Parcelable {
         reason = in.readString();
         subject = in.readString();
         status = in.readString();
+        leave_number = in.readString();
     }
 
     public static final Creator<Leave> CREATOR = new Creator<Leave>() {
@@ -77,7 +80,7 @@ public class Leave implements Parcelable {
         this.approver_id = approver_id;
     }
 
-
+    public String getLeave_number() { return leave_number; }
 
     @Override
     public int describeContents() {
@@ -93,5 +96,6 @@ public class Leave implements Parcelable {
         dest.writeString(reason);
         dest.writeString(subject);
         dest.writeString(status);
+        dest.writeString(leave_number);
     }
 }

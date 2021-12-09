@@ -3,8 +3,6 @@ package com.example.splashscreenlotteanimation.Manager_Pages;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.example.splashscreenlotteanimation.EmployeeViewLeaveAdapter;
 import com.example.splashscreenlotteanimation.Pojo.Leave;
 import com.example.splashscreenlotteanimation.Pojo.Manager;
 import com.example.splashscreenlotteanimation.R;
@@ -22,10 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewLeave extends AppCompatActivity {
+public class ManagerViewLeave extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    EmployeeViewLeaveAdapter employeeViewLeaveAdapter;
+    ManagerViewLeaveAdapter managerViewLeaveAdapter;
     DatabaseReference database;
     ArrayList<Leave> list;
     Manager user;
@@ -40,14 +38,14 @@ public class ViewLeave extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_leave);
+        setContentView(R.layout.activity_manager_view_leave);
         user = getIntent().getParcelableExtra("user");
 
 
         mAuth=FirebaseAuth.getInstance();
 //        if(mAuth.getCurrentUser().getEmail()=null) {
         setCurrent_UserEmail(mAuth.getCurrentUser().getEmail().toString());
-        Toast.makeText(ViewLeave.this, "current_mail_id---"+getCurrent_UserEmail()+"++++"+mAuth.getCurrentUser().getEmail().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ManagerViewLeave.this, "current_mail_id---"+getCurrent_UserEmail()+"++++"+mAuth.getCurrentUser().getEmail().toString(), Toast.LENGTH_SHORT).show();
 //        }
 
         DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Manager");
@@ -70,18 +68,14 @@ public class ViewLeave extends AppCompatActivity {
             }
         });
 
-
-
-
-
         recyclerView = findViewById(R.id.viewLeaveList);
         database = FirebaseDatabase.getInstance().getReference("Leave");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        employeeViewLeaveAdapter = new EmployeeViewLeaveAdapter(this, list);
-        recyclerView.setAdapter(employeeViewLeaveAdapter);
+        managerViewLeaveAdapter = new ManagerViewLeaveAdapter(this, list);
+        recyclerView.setAdapter(managerViewLeaveAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,14 +90,13 @@ public class ViewLeave extends AppCompatActivity {
                         Log.d("Content-----insideIF",leave.toString());
                         list.add(leave);
                 }
-                employeeViewLeaveAdapter.notifyDataSetChanged();
+                managerViewLeaveAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
 
     }
     public String getCurrent_UserEmail() {

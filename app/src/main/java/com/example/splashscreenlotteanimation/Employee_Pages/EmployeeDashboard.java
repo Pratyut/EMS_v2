@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.splashscreenlotteanimation.Admin_Pages.AdminDashboard;
 import com.example.splashscreenlotteanimation.LoginActivity;
-import com.example.splashscreenlotteanimation.Manager_Pages.ManagerDashboard;
 import com.example.splashscreenlotteanimation.R;
 import com.example.splashscreenlotteanimation.UserDirectory_Profile.UserList;
 import com.example.splashscreenlotteanimation.ViewDirectory;
@@ -36,7 +36,7 @@ public class EmployeeDashboard extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     TextView greeting, user;
-    Button profile, notice_board, timesheet, leave_application, directory;
+    Button profile, notice_board, timesheet, leave_application,view_leave_button, directory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,17 @@ public class EmployeeDashboard extends AppCompatActivity {
             Intent intent = new Intent(EmployeeDashboard.this, ApplyLeave.class);
             intent.putExtra("Employee", "yes");
             startActivity(intent);
+        });
+
+        view_leave_button=findViewById(R.id.view_leave_button);
+        view_leave_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EmployeeDashboard.this, EmployeeViewLeave.class);
+                intent.putExtra("Employee", "yes");
+                startActivity(intent);
+
+            }
         });
 
         directory = findViewById(R.id.view_directory_button);

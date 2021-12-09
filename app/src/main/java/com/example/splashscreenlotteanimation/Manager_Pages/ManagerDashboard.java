@@ -15,12 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.splashscreenlotteanimation.Admin_Pages.AdminDashboard;
+import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeViewLeave;
 import com.example.splashscreenlotteanimation.LoginActivity;
 import com.example.splashscreenlotteanimation.R;
 import com.example.splashscreenlotteanimation.RiskAssessment;
 import com.example.splashscreenlotteanimation.UserDirectory_Profile.UserList;
-import com.example.splashscreenlotteanimation.ViewDirectory;
 import com.example.splashscreenlotteanimation.ViewProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -71,7 +70,7 @@ public class ManagerDashboard extends AppCompatActivity {
         approve_leave = findViewById(R.id.approve_leave_application_button);
         approve_leave.setOnClickListener(v -> {
             //Not implemented
-            Intent intent = new Intent(ManagerDashboard.this, ViewLeave.class);
+            Intent intent = new Intent(ManagerDashboard.this, ManagerViewLeave.class);
             intent.putExtra("Employee", "no");
             startActivity(intent);
         });

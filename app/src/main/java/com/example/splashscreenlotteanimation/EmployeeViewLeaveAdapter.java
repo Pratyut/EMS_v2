@@ -2,6 +2,7 @@ package com.example.splashscreenlotteanimation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.splashscreenlotteanimation.Manager_Pages.ViewLeave;
 import com.example.splashscreenlotteanimation.Pojo.Leave;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,11 +41,15 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
     public void onBindViewHolder(@NonNull EmployeeViewLeaveViewHolder holder, int position) {
         Leave leave = list.get(position);
         holder.viewleavesubject.setText(leave.getSubject());
+        holder.leaveStart.setText(leave.getFrom().substring(0,leave.getFrom().lastIndexOf('/')));
+        holder.leaveEnd.setText(leave.getTo().substring(0,leave.getFrom().lastIndexOf('/')));
+        holder.viewleavesubject.setText(leave.getSubject());
         holder.removeleaverequest.setOnClickListener(v -> {
-            database.child(leave.userid).removeValue();
+            Log.d("Leaves",leave.leave_number);
+            database.child(leave.leave_number).removeValue();
             Toast.makeText(v.getContext(), "Leave Removed successfully", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(v.getContext(), ViewLeave.class);
-            context.startActivity(i);
+            /*Intent i = new Intent(v.getContext(), ViewLeave.class);
+            context.startActivity(i);*/
         });
 
     }
@@ -57,12 +61,14 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
 
     public static class EmployeeViewLeaveViewHolder extends RecyclerView.ViewHolder{
 
-        TextView viewleavesubject;
+        TextView viewleavesubject, leaveStart, leaveEnd;
         Button removeleaverequest;
 
         public EmployeeViewLeaveViewHolder(@NonNull View itemView) {
             super(itemView);
             viewleavesubject = itemView.findViewById(R.id.viewLeaveSubject);
+            leaveStart=itemView.findViewById(R.id.viewLeavestartDate);
+            leaveEnd=itemView.findViewById(R.id.LeaveEndDate);
             removeleaverequest = itemView.findViewById(R.id.removeLeaveRequest);
 
         }

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Manager_Pages.ManagerSingleViewLeave">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginTop="15sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="Employee ID:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlEmployeeId"
+                android:layout_width="181dp"
+                android:clickable="false"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Employee id"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="Leave Number:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlLeaveNumber"
+                android:clickable="false"
+                android:layout_width="181dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="leave number"
+                android:textSize="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="From:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlfrom"
+                android:layout_width="182dp"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"
+                android:text="date"
+                android:textSize="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="To:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlto"
+                android:layout_width="184dp"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"
+                android:text="date"
+                android:textSize="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="Subject:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlsubject"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"
+                android:lines="2"
+                android:text="subject"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="Reason:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlreason"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"
+                android:lines="5"
+                android:text="reason"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="Status:"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/msvlstatus"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"
+                android:text="status"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

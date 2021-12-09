@@ -153,9 +153,11 @@ public class ApplyLeave extends AppCompatActivity {
                         }
 
                         Log.d("Content__beforeOBJECT",getUser().email+"--"+getUser().employee_id);
-                        Leave leave = new Leave(user.employee_id,user.supervisor_id,fromdate, todate, reason, subject);
-                        database = FirebaseDatabase.getInstance().getReference("Leave");
                         String leave_number=user.employee_id+"_"+random.nextInt(1400);
+
+                        Leave leave = new Leave(user.employee_id,user.supervisor_id,fromdate, todate, reason, subject,leave_number);
+                        database = FirebaseDatabase.getInstance().getReference("Leave");
+
 //                database.child(user.employee_id+).setValue(leave);
                         database.child(leave_number).setValue(leave);
                         fromDate.setText("");

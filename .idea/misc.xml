@@ -3,15 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activityManager_view_leave.xml" value="0.11865942028985507" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_add_employee.xml" value="0.25" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.2" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_apply_leave.xml" value="0.13768115942028986" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_delete_employee.xml" value="0.1082427536231884" />
-        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_employee_dashboard.xml" value="0.1082427536231884" />
+        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_employee_dashboard.xml" value="0.25" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_fill_timesheet.xml" value="0.1" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_leave.xml" value="0.1" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_login.xml" value="0.16983695652173914" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_manager_dashboard.xml" value="0.1609375" />
+        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_manager_single_view_leave.xml" value="0.11865942028985507" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_notice_board.xml" value="0.1" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_publish_notice.xml" value="0.1" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
@@ -25,7 +27,8 @@
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/activity_view_timesheet.xml" value="0.1" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/delete_employee_item.xml" value="0.2774566473988439" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/employee_rv_item.xml" value="0.25" />
-        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/employee_view_leave.xml" value="0.13768115942028986" />
+        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/employee_view_leave.xml" value="0.21" />
+        <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/manager_view_leave.xml" value="0.11865942028985507" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/layout/profile_item.xml" value="0.18" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/menu/menu_items.xml" value="0.15572916666666667" />
         <entry key="..\:/Android 2nd innings/Code Compilation/SplashScreenLotteAnimation/app/src/main/res/menu/menu_search_item.xml" value="0.13333333333333333" />

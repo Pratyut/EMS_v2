@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="32dp"
+    app:cardElevation="16dp"
     app:cardCornerRadius="10dp"
     android:layout_margin="16dp">
 
@@ -23,12 +23,49 @@
                 android:layout_marginVertical="10dp"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:orientation="vertical">
+                <TextView
+                    android:backgroundTint="@color/cardview_light_background"
+                    android:id="@+id/viewLeavestartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10/12"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingTop="@dimen/cardview_default_elevation"
+                    android:paddingBottom="@dimen/cardview_default_elevation"
+                    android:paddingRight="@dimen/cardview_default_elevation"
+                    android:paddingLeft="@dimen/cardview_default_elevation"/>
+
+                    <TextView
+                        android:backgroundTint="@color/cardview_light_background"
+                        android:id="@+id/LeaveEndDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11/12"
+                        android:textStyle="bold"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:paddingTop="@dimen/cardview_default_elevation"
+                        android:paddingBottom="@dimen/cardview_default_elevation"
+                        android:paddingRight="@dimen/cardview_default_elevation"
+                        android:paddingLeft="@dimen/cardview_default_elevation"/>
+
+                </LinearLayout>
                 <TextView
                     android:backgroundTint="@color/cardview_light_background"
                     android:id="@+id/viewLeaveSubject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LeaveSubject"
+                    android:ellipsize="marquee"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -47,6 +84,8 @@
                 android:backgroundTint="@color/white"
                 android:forceHasOverlappingRendering="true"
                 android:padding="15dp"
+                android:gravity="center"
+                android:layout_centerVertical="true"
                 android:paddingLeft="@dimen/cardview_default_elevation"
                 android:paddingTop="@dimen/cardview_default_elevation"
                 android:paddingRight="@dimen/cardview_default_elevation"

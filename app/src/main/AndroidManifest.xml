@@ -19,8 +19,19 @@
             android:exported="false" />
 
         <activity
-            android:name=".Manager_Pages.ViewLeave"
-            android:exported="false" />
+            android:name=".Employee_Pages.EmployeeViewLeave"
+            android:exported="false"
+            android:noHistory="true"/>
+
+        <activity
+            android:name=".Manager_Pages.ManagerSingleViewLeave"
+            android:exported="false"
+            android:noHistory="true"/>
+
+        <activity
+            android:name=".Manager_Pages.ManagerViewLeave"
+            android:exported="false"
+            android:noHistory="true"/>
 
         <activity
             android:name=".ViewProfile"
