@@ -106,23 +106,22 @@ public class view_timesheet extends AppCompatActivity {
 
 
                 DateEdt.setText(value.getDate()) ;
-                TimeEdt1.setText(value.getTime()[0]);
-                TaskDescreptionEdt1.setText(value.getTaskDescreption()[0]);
-                TimeEdt2.setText(value.getTime()[1]);
-                TaskDescreptionEdt2.setText(value.getTaskDescreption()[1]);
-                TimeEdt3.setText(value.getTime()[2]);
-                TaskDescreptionEdt3.setText(value.getTaskDescreption()[2]);
-                TimeEdt4.setText(value.getTime()[3]);
-                TaskDescreptionEdt4.setText(value.getTaskDescreption()[3]);
-                TimeEdt5.setText(value.getTime()[4]);
-                TaskDescreptionEdt5.setText(value.getTaskDescreption()[4]);
-                TimeEdt6.setText(value.getTime()[5]);
-                TaskDescreptionEdt6.setText(value.getTaskDescreption()[5]);
-                TimeEdt7.setText(value.getTime()[6]);
-                TaskDescreptionEdt7.setText(value.getTaskDescreption()[6]);
-                TimeEdt8.setText(value.getTime()[7]);
-                TaskDescreptionEdt8.setText(value.getTaskDescreption()[7]);
-
+                TimeEdt1.setText(value.getTime().get(0));
+                TaskDescreptionEdt1.setText(value.getTaskDescreption().get(0));
+//                TimeEdt2.setText(value.getTime()[1]);
+//                TaskDescreptionEdt2.setText(value.getTaskDescreption()[1]);
+//                TimeEdt3.setText(value.getTime()[2]);
+//                TaskDescreptionEdt3.setText(value.getTaskDescreption()[2]);
+//                TimeEdt4.setText(value.getTime()[3]);
+//                TaskDescreptionEdt4.setText(value.getTaskDescreption()[3]);
+//                TimeEdt5.setText(value.getTime()[4]);
+//                TaskDescreptionEdt5.setText(value.getTaskDescreption()[4]);
+//                TimeEdt6.setText(value.getTime()[5]);
+//                TaskDescreptionEdt6.setText(value.getTaskDescreption()[5]);
+//                TimeEdt7.setText(value.getTime()[6]);
+//                TaskDescreptionEdt7.setText(value.getTaskDescreption()[6]);
+//                TimeEdt8.setText(value.getTime()[7]);
+//                TaskDescreptionEdt8.setText(value.getTaskDescreption()[7]);
             }
 
             @Override

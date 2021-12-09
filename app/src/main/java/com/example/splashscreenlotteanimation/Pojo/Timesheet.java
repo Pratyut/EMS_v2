@@ -1,5 +1,9 @@
 package com.example.splashscreenlotteanimation.Pojo;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Timesheet {
 
     // string variable for
@@ -8,43 +12,38 @@ public class Timesheet {
 
     // string variable for storing
     // employee contact number
-    private String[] Time;
+    private List<String> Time = new ArrayList();
 
     // string variable for storing
     // employee address.
-    private String[] TaskDescreption;
+    private List<String> TaskDescreption = new ArrayList();
 
     // an empty constructor is
     // required when using
     // Firebase Realtime Database.
-    public Timesheet() {
-        this.Time = new String[8];
-        this.TaskDescreption = new String[8];
+    public Timesheet() { }
+
+    public List<String> getTaskDescreption() {
+        return TaskDescreption;
     }
 
-    // created getter and setter methods
-    // for all our variables.
+    public void setTaskDescreption(List<String> taskDescreption) {
+        TaskDescreption = taskDescreption;
+    }
+
+    public List<String> getTime() {
+        return Time;
+    }
+
+    public void setTime(List<String> time) {
+        Time = time;
+    }
+
     public String getDate() {
         return Date;
     }
 
-    public void setDate(String Date) {
-        this.Date = Date;
-    }
-
-    public String[] getTime() {
-        return Time;
-    }
-
-    public void setTime(String[] Time) {
-        this.Time = Time;
-    }
-
-    public String[] getTaskDescreption() {
-        return TaskDescreption;
-    }
-
-    public void setTaskDescreption(String[] TaskDescreption) {
-        this.TaskDescreption = TaskDescreption;
+    public void setDate(String date) {
+        Date = date;
     }
 }
