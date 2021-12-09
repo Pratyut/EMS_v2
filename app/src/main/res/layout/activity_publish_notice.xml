@@ -122,5 +122,19 @@ tools:context=".Manager_Pages.publish_notice">
     android:textStyle="bold"
     android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/idBtnviewOlderNotices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="View Older Notices"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+
+
     </LinearLayout>
 </ScrollView>

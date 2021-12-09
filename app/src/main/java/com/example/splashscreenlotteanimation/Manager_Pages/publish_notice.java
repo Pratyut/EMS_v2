@@ -1,11 +1,14 @@
 package com.example.splashscreenlotteanimation.Manager_Pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.splashscreenlotteanimation.Employee_Pages.view_notice;
 import com.example.splashscreenlotteanimation.Pojo.Notice;
 import com.example.splashscreenlotteanimation.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +30,7 @@ public class publish_notice extends AppCompatActivity {
     // creating variables for
     // EditText and buttons.
     private EditText ReceiverEdt, SubjectEdt, BodyEdt;
-    private Button sendDatabtn;
+    private Button sendDatabtn,viewOlderNotices;
 
     // creating a variable for our
     // Firebase Database.
@@ -90,6 +93,14 @@ public class publish_notice extends AppCompatActivity {
                 finish();
             }
         });
+
+        viewOlderNotices=findViewById(R.id.idBtnviewOlderNotices);
+        viewOlderNotices.setOnClickListener(v -> {
+            Intent intent=new Intent(publish_notice.this, view_notice.class);
+            startActivity(intent);
+        }
+
+       );
     }
 
 

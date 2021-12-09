@@ -1,5 +1,6 @@
 package com.example.splashscreenlotteanimation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeDashboard;
+import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeViewLeave;
 import com.example.splashscreenlotteanimation.Pojo.Leave;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,7 +50,8 @@ public class EmployeeViewLeaveAdapter extends RecyclerView.Adapter<EmployeeViewL
         holder.removeleaverequest.setOnClickListener(v -> {
             Log.d("Leaves",leave.leave_number);
             database.child(leave.leave_number).removeValue();
-            Toast.makeText(v.getContext(), "Leave Removed successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), "Leave Removed successfully. Please refresh the page", Toast.LENGTH_SHORT).show();
+            v.getContext().startActivity(new Intent(v.getContext(), EmployeeDashboard.class));
             /*Intent i = new Intent(v.getContext(), ViewLeave.class);
             context.startActivity(i);*/
         });

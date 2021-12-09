@@ -95,10 +95,11 @@ public class EmployeeViewLeave extends AppCompatActivity {
                     Leave leave = dataSnapshot.getValue(Leave.class);
                     assert leave != null;
                     Log.d("Content",leave.toString());
-                    if (leave.userid.equals(user.employee_id))
-                        Log.d("Content-----insideIF",leave.toString());
+                    if (leave.userid.equals(user.employee_id)) {
+                        Log.d("Content-----insideIF", leave.toString());
                         list.add(leave);
-                }
+                    }  //----------- //look for if condition body in manager_view leave segmet as well
+                    }
                 employeeViewLeaveAdapter.notifyDataSetChanged();
             }
             @Override

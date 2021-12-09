@@ -90,7 +90,8 @@
 
         <activity
             android:name=".Employee_Pages.view_notice"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
 
 
         <activity

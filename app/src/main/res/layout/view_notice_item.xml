@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardElevation="16dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:backgroundTint="@color/cardview_light_background"
+                android:id="@+id/view_notice_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LeaveSubject"
+                android:ellipsize="marquee"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:paddingTop="@dimen/cardview_default_elevation"
+                android:paddingBottom="@dimen/cardview_default_elevation"
+                android:paddingRight="@dimen/cardview_default_elevation"
+                android:paddingLeft="@dimen/cardview_default_elevation"/>
+
+            <TextView
+                android:backgroundTint="@color/cardview_light_background"
+                android:id="@+id/view_notice_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="body"
+                android:inputType="textMultiLine"
+                android:ellipsize="marquee"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingTop="@dimen/cardview_default_elevation"
+                android:paddingBottom="@dimen/cardview_default_elevation"
+                android:paddingRight="@dimen/cardview_default_elevation"
+                android:paddingLeft="@dimen/cardview_default_elevation"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
