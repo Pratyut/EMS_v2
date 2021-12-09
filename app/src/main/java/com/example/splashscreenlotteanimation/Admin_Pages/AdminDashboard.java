@@ -182,4 +182,17 @@ public class AdminDashboard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setTitle("Really Exit?").setMessage("You'll be logged out. Are you sure you want to exit?").setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(getApplicationContext(),"You have been logged out.", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }).create().show();
+    }
+
 }

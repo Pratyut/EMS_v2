@@ -86,10 +86,11 @@ public class ManagerViewLeave extends AppCompatActivity {
                     Leave leave = dataSnapshot.getValue(Leave.class);
                     assert leave != null;
                     Log.d("Content",leave.toString());
-                    if (leave.approver_id.equals(user.employee_id))
-                        Log.d("Content-----insideIF",leave.toString());
+                    if (leave.approver_id.equals(user.employee_id)) {
+                        Log.d("Content-----insideIF", leave.toString());
                         list.add(leave);
-                }
+                    }
+                    }
                 managerViewLeaveAdapter.notifyDataSetChanged();
             }
             @Override

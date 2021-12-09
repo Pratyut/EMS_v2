@@ -1,11 +1,13 @@
 package com.example.splashscreenlotteanimation.Manager_Pages;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.splashscreenlotteanimation.Employee_Pages.EmployeeViewLeave;
 import com.example.splashscreenlotteanimation.LoginActivity;
+import com.example.splashscreenlotteanimation.Pojo.Manager;
 import com.example.splashscreenlotteanimation.R;
 import com.example.splashscreenlotteanimation.RiskAssessment;
 import com.example.splashscreenlotteanimation.UserDirectory_Profile.UserList;
@@ -27,15 +30,24 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ManagerDashboard extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-    TextView greeting, user;
+    TextView greeting,mgr;
     Button profile, access_timesheet, approve_leave, notices, directory, risk;
+    FirebaseUser user;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +68,33 @@ public class ManagerDashboard extends AppCompatActivity {
             greeting.setText("Good Evening,");
         }
 
-        user = findViewById(R.id.manager);
-        user.setText("MANAGER");
+        mgr = findViewById(R.id.manager);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Manager");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Manager manager = snapshot1.getValue(Manager.class);
+                    if (manager.getEmail().equals(user.getEmail())) {
+                        mgr.setText(manager.name.toUpperCase(Locale.ROOT));
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
         profile = findViewById(R.id.view_profile_button);
         profile.setOnClickListener(v -> startActivity(new Intent(ManagerDashboard.this, ViewProfile.class)));
+
         access_timesheet = findViewById(R.id.access_timesheet_button);
         access_timesheet.setOnClickListener(v -> {
             //Not implemented
@@ -203,4 +238,18 @@ public class ManagerDashboard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setTitle("Really Exit?").setMessage("You'll be logged out. Are you sure you want to exit?").setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(getApplicationContext(),"You have been logged out.", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }).create().show();
+    }
+
 }

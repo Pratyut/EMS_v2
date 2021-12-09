@@ -52,7 +52,7 @@ public class view_notice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("View Notice");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Notice Board");
         setContentView(R.layout.activity_view_notice);
 
         // below line is used to get the instance
@@ -80,6 +80,8 @@ public class view_notice extends AppCompatActivity {
                     list.add(notice);
                 }
                 Log.d("Content", String.valueOf(list.size()));
+                viewNoticeListAdapter.notifyDataSetChanged();
+
             }
 
             @Override

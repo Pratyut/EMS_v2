@@ -28,13 +28,17 @@ import java.util.Objects;
 public class AddEmployee extends AppCompatActivity {
 
     final String[] designation = {"Employee", "Manager"};
+    final String[] gender = {"Male", "Female"};
+
     EditText user_mail_ip,password_ip;
 
     EditText name_txt, id_txt, email_txt, password_txt,cnf_password_txt,supervisor_id_txt,contact_num_txt;
     AutoCompleteTextView autoCompleteTxt;
     ArrayAdapter<String> myAdapter;
+    ArrayAdapter<String> myAdapterDesignation, myAdapterGender ;
     String item, email_address, password, name, id,cnf_password,supervisor_id,contact_num;
     Button add;
+    String itemDesignation, itemGender;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
@@ -48,10 +52,27 @@ public class AddEmployee extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-        autoCompleteTxt = findViewById(R.id.autoCompleteTextView);
+//        autoCompleteTxt = findViewById(R.id.autoCompleteTextView);
+
+        autoCompleteTxt = findViewById(R.id.autoCompleteTextViewGender);
+        myAdapterGender = new ArrayAdapter<>(AddEmployee.this, R.layout.dropdown_item_designation, gender);
+        autoCompleteTxt.setAdapter(myAdapterGender);
+        autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> itemGender = parent.getItemAtPosition(position).toString());
+
+        autoCompleteTxt = findViewById(R.id.autoCompleteTextViewPost);
+        myAdapterDesignation = new ArrayAdapter<>(AddEmployee.this, R.layout.dropdown_item_designation, designation);
+        autoCompleteTxt.setAdapter(myAdapterDesignation);
+        autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> itemDesignation = parent.getItemAtPosition(position).toString());
+
+
+
+
+
+
+
         myAdapter = new ArrayAdapter<>(AddEmployee.this, R.layout.dropdown_item_designation, designation);
-        autoCompleteTxt.setAdapter(myAdapter);
-        autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> item = parent.getItemAtPosition(position).toString());
+//        autoCompleteTxt.setAdapter(myAdapter);
+//        autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> item = parent.getItemAtPosition(position).toString());
 
         add = findViewById(R.id.add_employee_button);
         add.setOnClickListener(v -> {
@@ -95,11 +116,15 @@ public class AddEmployee extends AppCompatActivity {
             {
                 Toast.makeText(AddEmployee.this, "Please check, password instances dont match", Toast.LENGTH_SHORT).show();
             }
-            else if (item==null)
+            else if (itemDesignation==null)
             {
                 Toast.makeText(AddEmployee.this, "Please select either of designations", Toast.LENGTH_SHORT).show();
             }
-            else if (item.equals("Employee") && supervisor_id.isEmpty())
+            else if (itemGender==null)
+            {
+                Toast.makeText(AddEmployee.this, "Please select either of gender", Toast.LENGTH_SHORT).show();
+            }
+            else if (itemDesignation.equals("Employee") && supervisor_id.isEmpty())
             {
                     Toast.makeText(AddEmployee.this, "An employee must have a supervisor", Toast.LENGTH_SHORT).show();
             }
@@ -110,10 +135,10 @@ public class AddEmployee extends AppCompatActivity {
                     } else {
                         setRegister_success(1);
                         //Add employee node to database
-                        if (item.equals("Employee")) {
+                        if (itemDesignation.equals("Employee")) {
 
                             databaseReference = firebaseDatabase.getReference("Employee");
-                            Employee object = new Employee(email_address,name, contact_num,id , supervisor_id);
+                            Employee object = new Employee(email_address,name, contact_num,id , supervisor_id,"",itemGender,"","");
                             databaseReference.child(id).setValue(object);
                             Toast.makeText(getApplicationContext(), "Employee Added.", Toast.LENGTH_LONG).show();
                             /*databaseReference.addValueEventListener(new ValueEventListener() {
@@ -133,7 +158,9 @@ public class AddEmployee extends AppCompatActivity {
                         } else {
 
                             databaseReference = firebaseDatabase.getReference("Manager");
-                            Manager object = new Manager(email_address,name, contact_num, id);
+//                            Manager object = new Manager(email_address,name, contact_num, id,);
+                            Manager object = new Manager(email_address, name, id, contact_num, "", itemGender, "", "", "");
+
                             databaseReference.child(id).setValue(object);
                             Toast.makeText(getApplicationContext(), "Manager Added.", Toast.LENGTH_LONG).show();
 
@@ -156,7 +183,7 @@ public class AddEmployee extends AppCompatActivity {
                         String curated_email=email_address.replace("@","at").replace(".","dot");
 
                         DatabaseReference db=FirebaseDatabase.getInstance().getReference("Role");
-                        db.child(curated_email).setValue(String.valueOf(item.charAt(0)));
+                        db.child(curated_email).setValue(String.valueOf(itemDesignation.charAt(0)));
 
                         if(getRegister_success()==1)
                         {

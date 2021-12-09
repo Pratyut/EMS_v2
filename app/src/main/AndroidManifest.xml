@@ -7,32 +7,34 @@
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/application_icon"
         android:label="EMS"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/Theme.SplashScreenLotteAnimation">
+        <activity
+            android:name=".Certificate"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
         <activity
             android:name=".RiskAssessment"
             android:exported="false" />
         <activity
             android:name=".Employee_Pages.ApplyLeave"
             android:exported="false" />
-
         <activity
             android:name=".Employee_Pages.EmployeeViewLeave"
             android:exported="false"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".Manager_Pages.ManagerSingleViewLeave"
             android:exported="false"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".Manager_Pages.ManagerViewLeave"
             android:exported="false"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".ViewProfile"
             android:exported="false" />
@@ -48,27 +50,23 @@
         <activity
             android:name=".Admin_Pages.DeleteEmployee"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".Admin_Pages.AddEmployee"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".UserDirectory_Profile.UserList"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".UserDirectory_Profile.UserProfile"
             android:exported="false"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".UserAuthenticated"
             android:exported="false"
             android:noHistory="true" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="false" />
         <activity
             android:name=".Manager_Pages.ManagerDashboard"
             android:exported="false" />
@@ -80,20 +78,16 @@
             android:name=".Manager_Pages.view_timesheet"
             android:exported="false"
             android:noHistory="true" />
-
         <activity
             android:name=".Employee_Pages.EmployeeDashboard"
             android:exported="false" />
         <activity
             android:name=".Employee_Pages.fill_timesheet"
             android:exported="false" />
-
         <activity
             android:name=".Employee_Pages.view_notice"
             android:exported="false"
-            android:noHistory="true"/>
-
-
+            android:noHistory="true" />
         <activity
             android:name=".Admin_Pages.AdminDashboard"
             android:exported="false" />

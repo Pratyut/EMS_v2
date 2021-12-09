@@ -1,11 +1,13 @@
 package com.example.splashscreenlotteanimation.Employee_Pages;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.splashscreenlotteanimation.Admin_Pages.AdminDashboard;
 import com.example.splashscreenlotteanimation.LoginActivity;
+import com.example.splashscreenlotteanimation.Pojo.Manager;
 import com.example.splashscreenlotteanimation.R;
 import com.example.splashscreenlotteanimation.UserDirectory_Profile.UserList;
 import com.example.splashscreenlotteanimation.ViewDirectory;
@@ -28,14 +31,21 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class EmployeeDashboard extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-    TextView greeting, user;
+    TextView greeting,emp;
+    FirebaseUser user;
     Button profile, notice_board, timesheet, leave_application,view_leave_button, directory;
 
     @Override
@@ -55,8 +65,31 @@ public class EmployeeDashboard extends AppCompatActivity {
             greeting.setText("Good Evening,");
         }
 
-        user = findViewById(R.id.employee);
-        user.setText("EMPLOYEE");
+        emp = findViewById(R.id.employee);
+//        emp.setText("EMPLOYEE");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Employee");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Manager manager = snapshot1.getValue(Manager.class);
+                    if (manager.getEmail().equals(user.getEmail())) {
+
+                        emp.setText(manager.name.toUpperCase(Locale.ROOT));
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+
+
 
         profile = findViewById(R.id.view_profile_button);
         profile.setOnClickListener(v -> startActivity(new Intent(EmployeeDashboard.this, ViewProfile.class)));
@@ -218,4 +251,18 @@ public class EmployeeDashboard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setTitle("Really Exit?").setMessage("You'll be logged out. Are you sure you want to exit?").setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(getApplicationContext(),"You have been logged out.", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }).create().show();
+    }
+
+
+
 }
