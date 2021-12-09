@@ -67,7 +67,7 @@ public class AdminDashboard extends AppCompatActivity {
         remove.setOnClickListener(v -> startActivity(new Intent(AdminDashboard.this, DeleteEmployee.class)));
 
         edit = findViewById(R.id.update_employee_button);
-        edit.setOnClickListener(v -> startActivity(new Intent(AdminDashboard.this, UpdateEmployee.class)));
+        edit.setOnClickListener(v -> startActivity(new Intent(AdminDashboard.this, UpdateEmployeeV1.class)));
 
         view = findViewById(R.id.view_directory_button);
         view.setOnClickListener(v ->

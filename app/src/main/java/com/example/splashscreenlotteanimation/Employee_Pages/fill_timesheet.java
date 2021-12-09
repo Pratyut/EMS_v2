@@ -1,19 +1,35 @@
 package com.example.splashscreenlotteanimation.Employee_Pages;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.splashscreenlotteanimation.Pojo.Employee;
 import com.example.splashscreenlotteanimation.Pojo.Timesheet;
 import com.example.splashscreenlotteanimation.R;
+import com.example.splashscreenlotteanimation.ViewProfile;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -24,58 +40,78 @@ public class fill_timesheet extends AppCompatActivity {
 
     // creating variables for
     // EditText and buttons.
-    private EditText DateEdt, TimeEdt1, TaskDescreptionEdt1;
-    private EditText TimeEdt2, TaskDescreptionEdt2;
-    private EditText TimeEdt3, TaskDescreptionEdt3;
-    private EditText TimeEdt4, TaskDescreptionEdt4;
-    private EditText TimeEdt5, TaskDescreptionEdt5;
-    private EditText TimeEdt6, TaskDescreptionEdt6;
-    private EditText TimeEdt7, TaskDescreptionEdt7;
-    private EditText TimeEdt8, TaskDescreptionEdt8;
+
+    TextInputEditText date, hours, summary, description;
+    TextInputLayout date_;
+    String date_str,hours_str,summary_str,description_str;
+    private DatePickerDialog picker;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private FirebaseUser user;
     private Button sendDatabtn;
 
-    // creating a variable for our
-    // Firebase Database.
-    FirebaseDatabase firebaseDatabase;
 
-    // creating a variable for our Database
-    // Reference for Firebase.
-    DatabaseReference databaseReference;
 
     // creating a variable for
     // our object class
     Timesheet timesheet;
 
+    Employee temp_emp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fill_timesheet);
+        setContentView(R.layout.activity_fill_timesheet_v1);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Fill Timesheet");
         // initializing our edittext and button
-        DateEdt = findViewById(R.id.idEdtDate);
-        TimeEdt1 = findViewById(R.id.idEdtTime5);
-        TaskDescreptionEdt1 = findViewById(R.id.idEdtTaskDescription5);
 
-        TimeEdt2 = findViewById(R.id.idEdtTime4);
-        TaskDescreptionEdt2 = findViewById(R.id.idEdtTaskDescription4);
 
-        TimeEdt3 = findViewById(R.id.idEdtTime7);
-        TaskDescreptionEdt3 = findViewById(R.id.idEdtTaskDescription7);
+        hours = findViewById(R.id.hours_etext);
+        summary = findViewById(R.id.summary_etext);
+        description = findViewById(R.id.description_text);
+        date_ = findViewById(R.id.effort_date_text);
+        date = findViewById(R.id.date_etext);
 
-        TimeEdt4 = findViewById(R.id.idEdtTime6);
-        TaskDescreptionEdt4 = findViewById(R.id.idEdtTaskDescription6);
 
-        TimeEdt5 = findViewById(R.id.idEdtTime24);
-        TaskDescreptionEdt5 = findViewById(R.id.idEdtTaskDescription24);
 
-        TimeEdt6 = findViewById(R.id.idEdtTime26);
-        TaskDescreptionEdt6 = findViewById(R.id.idEdtTaskDescription26);
+        date_.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cal = Calendar.getInstance();
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                int month = cal.get(Calendar.MONTH);
+                int year = cal.get(Calendar.YEAR);
 
-        TimeEdt7 = findViewById(R.id.idEdtTime25);
-        TaskDescreptionEdt7 = findViewById(R.id.idEdtTaskDescription25);
+                picker = new DatePickerDialog(fill_timesheet.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        date.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                    }
+                }, year, month, day);
+                picker.show();
+            }
+        });
 
-        TimeEdt8 = findViewById(R.id.idEdtTime27);
-        TaskDescreptionEdt8 = findViewById(R.id.idEdtTaskDescription27);
+
+//////// setting the employee object
+            user=FirebaseAuth.getInstance().getCurrentUser();
+            DatabaseReference databaseReference_emp = FirebaseDatabase.getInstance().getReference("Employee");
+            databaseReference_emp.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        Employee employee = snapshot1.getValue(Employee.class);
+                        if (employee.getEmail().equals(user.getEmail())) {
+                            setTemp_emp(employee);
+                            break;
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
 
 
 
@@ -83,60 +119,68 @@ public class fill_timesheet extends AppCompatActivity {
         // below line is used to get the
         // instance of our FIrebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
-
-        // below line is used to get reference for our database.
-        databaseReference = firebaseDatabase.getReference("Timesheet_info");
-
         // initializing our object
         // class variable.
         timesheet = new Timesheet();
 
-        sendDatabtn = findViewById(R.id.idBtnSendData);
+        // below line is used to get reference for our database.
+        databaseReference = firebaseDatabase.getReference("Timesheet_info");
 
+
+
+
+        sendDatabtn = findViewById(R.id.idBtnSendData);
         // adding on click listener for our button.
         sendDatabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // getting text from our edittext fields.
-                String date = DateEdt.getText().toString();
+                date_str = Objects.requireNonNull(date.getText()).toString().replace("/","_");
+                hours_str= Objects.requireNonNull(hours.getText()).toString();
+                description_str= Objects.requireNonNull(description.getText()).toString();
+                summary_str= Objects.requireNonNull(summary.getText()).toString();
 
-                String[] time;
-                String[] taskdesc;
+                if(date_str.isEmpty() || hours_str.isEmpty()|| description_str.isEmpty()|| summary_str.isEmpty())
+                {
+                    Toast.makeText(fill_timesheet.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
+                }
+                else if( Integer.parseInt(hours_str)>24)
+                {
+                    Toast.makeText(fill_timesheet.this, "Please fill practical hours", Toast.LENGTH_SHORT).show();
+                }
+                else{
 
-                time = new String[8];
-                taskdesc = new String[8];
+                    String user_email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    String user_email_curated=user_email.replace("@","at").replace(".","dot");
 
-                time[0] = TimeEdt1.getText().toString();
-                taskdesc[0] = TaskDescreptionEdt1.getText().toString();
+                    String timesheet_id=getTemp_emp().employee_id+"_"+date_str;
+                    timesheet=new Timesheet(getTemp_emp().employee_id,getTemp_emp().supervisor_id,date_str,summary_str,description_str,hours_str,timesheet_id);
 
-                time[1] = TimeEdt2.getText().toString();
-                taskdesc[1] = TaskDescreptionEdt2.getText().toString();
+                    databaseReference.child(getTemp_emp().employee_id+date_str).setValue(timesheet);
+                       /*     (timesheet, new OnCompleteListener<Task>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Task> task) {
+                           if(task.isSuccessful())
+                           {
+                               Toast.makeText(fill_timesheet.this, "Timesheet filled", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(fill_timesheet.this,EmployeeDashboard.class));
+                                finish();
+                           }
+                           else{
+                               Toast.makeText(fill_timesheet.this, "Failure, seems like you already filled timesheet for the day", Toast.LENGTH_SHORT).show();
+                           }
+                        }
+                    });*/
 
-                time[2] = TimeEdt3.getText().toString();
-                taskdesc[2] = TaskDescreptionEdt3.getText().toString();
-
-                time[3] = TimeEdt4.getText().toString();
-                taskdesc[3] = TaskDescreptionEdt4.getText().toString();
-
-                time[4] = TimeEdt5.getText().toString();
-                taskdesc[4] = TaskDescreptionEdt5.getText().toString();
-
-                time[5] = TimeEdt6.getText().toString();
-                taskdesc[5] = TaskDescreptionEdt6.getText().toString();
-
-                time[6] = TimeEdt7.getText().toString();
-                taskdesc[6] = TaskDescreptionEdt7.getText().toString();
-
-                time[7] = TimeEdt8.getText().toString();
-                taskdesc[7] = TaskDescreptionEdt8.getText().toString();
-
-                addDatatoFirebase(date, time, taskdesc);
+                }
+//                addDatatoFirebase(date, time, taskdesc);
 
             }
         });
     }
 
+/*
     private void addDatatoFirebase(String date, String[] time, String[] taskdesc) {
         // below 3 lines of code is used to set
         // data in our object class.
@@ -180,6 +224,15 @@ public class fill_timesheet extends AppCompatActivity {
                 Toast.makeText(fill_timesheet.this, "Fail to add data" + error, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+*/
+
+    public Employee getTemp_emp() {
+        return temp_emp;
+    }
+
+    public void setTemp_emp(Employee temp_emp) {
+        this.temp_emp = temp_emp;
     }
 
 

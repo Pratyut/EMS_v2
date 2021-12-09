@@ -181,7 +181,7 @@ public class Employee implements Parcelable {
     }
 
 
-    protected Employee(Parcel in) {
+    public Employee(Parcel in) {
         email = in.readString();
         name = in.readString();
         contact_no = in.readString();

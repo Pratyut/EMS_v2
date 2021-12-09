@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreenLotteAnimation">
         <activity
+            android:name=".Admin_Pages.UpdateEmployeeV1"
+            android:exported="false" />
+        <activity
             android:name=".Certificate"
             android:exported="false" />
         <activity
@@ -43,7 +46,8 @@
             android:exported="false" />
         <activity
             android:name=".UpdateEmployee"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".Admin_Pages.DeleteEmployee"
             android:exported="false"
@@ -102,8 +106,8 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

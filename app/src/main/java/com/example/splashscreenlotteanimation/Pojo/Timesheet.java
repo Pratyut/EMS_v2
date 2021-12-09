@@ -1,3 +1,4 @@
+/*
 package com.example.splashscreenlotteanimation.Pojo;
 
 public class Timesheet {
@@ -47,20 +48,25 @@ public class Timesheet {
     public void setTaskDescreption(String[] TaskDescreption) {
         this.TaskDescreption = TaskDescreption;
     }
-}
+}*/
 //Older Timesheet class code is shelved above.
 
-/*
 package com.example.splashscreenlotteanimation.Pojo;
 public class Timesheet {
-   public String emp_id,approver_id,date,summary,description;
+   public String emp_id,approver_id,date,summary,description,hours,timesheet_id,status;
 
-    public Timesheet(String emp_id, String approver_id, String date, String summary, String description) {
+    public Timesheet(String emp_id, String approver_id, String date, String summary, String description,String hours,String timesheet_id) {
         this.emp_id = emp_id;
         this.approver_id = approver_id;
         this.date = date;
         this.summary = summary;
         this.description = description;
+        this.hours=hours;
+        this.timesheet_id=timesheet_id;
+        this.status="pending";
+    }
+
+    public Timesheet() {
     }
 
     public String getEmp_id() {
@@ -102,4 +108,4 @@ public class Timesheet {
     public void setDescription(String description) {
         this.description = description;
     }
-}*/
+}

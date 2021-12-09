@@ -105,6 +105,7 @@ public class view_timesheet extends AppCompatActivity {
                 // our value to our text view in below line.
 
 
+/*
                 DateEdt.setText(value.getDate()) ;
                 TimeEdt1.setText(value.getTime()[0]);
                 TaskDescreptionEdt1.setText(value.getTaskDescreption()[0]);
@@ -122,6 +123,7 @@ public class view_timesheet extends AppCompatActivity {
                 TaskDescreptionEdt7.setText(value.getTaskDescreption()[6]);
                 TimeEdt8.setText(value.getTime()[7]);
                 TaskDescreptionEdt8.setText(value.getTaskDescreption()[7]);
+*/
 
             }
 

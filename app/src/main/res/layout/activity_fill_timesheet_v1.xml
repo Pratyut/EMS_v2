@@ -35,7 +35,7 @@
                 app:endIconMode="custom" >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dob_etext"
+                    android:id="@+id/date_etext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
@@ -66,7 +66,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_access_time_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_etext"
+                    android:id="@+id/hours_etext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
@@ -83,13 +83,13 @@
                 app:startIconDrawable="@drawable/ic_baseline_notes_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phone_etext"
+                    android:id="@+id/summary_etext"
                     android:layout_width="match_parent"
                     android:maxHeight="50dp"
                     android:scrollbars="vertical"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:inputType="phone" />
+                    android:inputType="textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,7 +104,7 @@
                 <!--            app:startIconDrawable="@drawable/ic_outline_my_location"-->
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address_text"
+                    android:id="@+id/description_text"
                     android:layout_width="match_parent"
                     android:maxHeight="90dp"
                     android:scrollbars="vertical"
@@ -114,7 +114,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/update"
+                android:id="@+id/idBtnSendData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
