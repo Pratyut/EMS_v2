@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="32dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ts_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/cardview_light_background"
+                android:paddingBottom="@dimen/cardview_default_elevation"
+                android:paddingLeft="@dimen/cardview_default_elevation"
+                android:paddingRight="@dimen/cardview_default_elevation"
+                android:paddingTop="@dimen/cardview_default_elevation"
+                android:layout_gravity="center_horizontal"
+                android:text="10/12"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ts_Emp_id"
+                android:layout_width="wrap_content"
+                android:maxWidth="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/cardview_light_background"
+                android:paddingLeft="@dimen/cardview_default_elevation"
+                android:paddingTop="@dimen/cardview_default_elevation"
+                android:paddingRight="@dimen/cardview_default_elevation"
+                android:paddingBottom="@dimen/cardview_default_elevation"
+                android:layout_marginTop="4dp"
+                android:text="Emp id"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/timesheet_summary"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"
+                android:text="Summary" />
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:ellipsize="marquee"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/black"
+                android:layout_below="@id/token_symptoms"/>
+
+            <TextView
+                android:id="@+id/timesheet_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:ellipsize="marquee"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="hours" />
+
+            <TextView
+                android:id="@+id/timesheet_Status"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:ellipsize="marquee"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="status" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            >
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/ts_approveLeaveRequest"
+                    android:layout_marginTop="-6dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:foregroundGravity="center_vertical"
+                    android:text="✓"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/ts_removeLeaveRequest"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:text="X"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

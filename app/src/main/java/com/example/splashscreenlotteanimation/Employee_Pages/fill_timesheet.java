@@ -157,7 +157,8 @@ public class fill_timesheet extends AppCompatActivity {
                     String timesheet_id=getTemp_emp().employee_id+"_"+date_str;
                     timesheet=new Timesheet(getTemp_emp().employee_id,getTemp_emp().supervisor_id,date_str,summary_str,description_str,hours_str,timesheet_id);
 
-                    databaseReference.child(getTemp_emp().employee_id+date_str).setValue(timesheet);
+//                    databaseReference.child(getTemp_emp().employee_id+date_str).setValue(timesheet);
+                    databaseReference.child(timesheet_id).setValue(timesheet);
                        /*     (timesheet, new OnCompleteListener<Task>() {
                         @Override
                         public void onComplete(@NonNull Task<Task> task) {

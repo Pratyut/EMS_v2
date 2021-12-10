@@ -172,7 +172,7 @@
                     android:background="#00000000"
                     android:fontFamily="@font/antic_slab"
                     android:padding="25dp"
-                    android:text="@string/access_timesheet"
+                    android:text="Timesheet Actions"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
