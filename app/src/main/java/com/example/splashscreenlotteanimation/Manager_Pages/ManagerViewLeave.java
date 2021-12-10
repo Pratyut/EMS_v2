@@ -40,14 +40,14 @@ public class ManagerViewLeave extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_view_leave);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Approve Leaves");
         user = getIntent().getParcelableExtra("user");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Leave Status");
 
 
         mAuth=FirebaseAuth.getInstance();
 //        if(mAuth.getCurrentUser().getEmail()=null) {
         setCurrent_UserEmail(mAuth.getCurrentUser().getEmail().toString());
-        Toast.makeText(ManagerViewLeave.this, "current_mail_id---"+getCurrent_UserEmail()+"++++"+mAuth.getCurrentUser().getEmail().toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ManagerViewLeave.this, "current_mail_id---"+getCurrent_UserEmail()+"++++"+mAuth.getCurrentUser().getEmail().toString(), Toast.LENGTH_SHORT).show();
 //        }
 
         DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Manager");

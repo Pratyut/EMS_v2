@@ -121,11 +121,6 @@ public class ManagerDashboard extends AppCompatActivity {
             //Not implemented
             startActivity(new Intent(ManagerDashboard.this, UserList.class));
         });
-        risk = findViewById(R.id.risk_assessment_button);
-        risk.setOnClickListener(v -> {
-            //Not implemented
-            startActivity(new Intent(ManagerDashboard.this, RiskAssessment.class));
-        });
 
         ////change password button action
         Button change_password = findViewById(R.id.password_change);

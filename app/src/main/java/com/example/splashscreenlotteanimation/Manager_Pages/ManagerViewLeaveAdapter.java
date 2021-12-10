@@ -2,6 +2,7 @@ package com.example.splashscreenlotteanimation.Manager_Pages;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,15 +43,19 @@ public class ManagerViewLeaveAdapter extends RecyclerView.Adapter<ManagerViewLea
         Leave leave = list.get(position);
         holder.viewleavesubject.setText(leave.getSubject());
         holder.leavestatus.setText(leave.getStatus());
+        holder.start_date.setText(leave.getFrom());
+        holder.end_date.setText(leave.to);
+        holder.applier_name.setText("Emp : "+leave.userid);
+        Log.d("manager Leave","Emp ID: "+leave.userid);
         if(leave.getStatus().equals("pending")){
             holder.removeleaverequest.setVisibility(View.VISIBLE);
             holder.approveleaverequest.setVisibility(View.VISIBLE);
         }
         else if(leave.getStatus().equals("approved")){
-            holder.removeleaverequest.setVisibility(View.VISIBLE);
+//            holder.removeleaverequest.setVisibility(View.VISIBLE);
         }
         else{
-            holder.approveleaverequest.setVisibility(View.VISIBLE);
+//            holder.approveleaverequest.setVisibility(View.VISIBLE);
         }
         holder.removeleaverequest.setOnClickListener(v -> {
             database.child(leave.leave_number).child("status").setValue("declined");
@@ -86,7 +91,7 @@ public class ManagerViewLeaveAdapter extends RecyclerView.Adapter<ManagerViewLea
 
     public static class ManagerViewLeaveViewHolder extends RecyclerView.ViewHolder{
 
-        TextView viewleavesubject, leavestatus;
+        TextView viewleavesubject, leavestatus,start_date,end_date,applier_name;
         Button removeleaverequest, approveleaverequest;
 
         public ManagerViewLeaveViewHolder(@NonNull View itemView) {
@@ -95,6 +100,9 @@ public class ManagerViewLeaveAdapter extends RecyclerView.Adapter<ManagerViewLea
             leavestatus = itemView.findViewById(R.id.leaveStatus);
             removeleaverequest = itemView.findViewById(R.id.removeLeaveRequest);
             approveleaverequest = itemView.findViewById(R.id.approveLeaveRequest);
+            start_date=itemView.findViewById(R.id.viewLeavestartDate);
+            end_date=itemView.findViewById(R.id.LeaveEndDate);
+            applier_name=itemView.findViewById(R.id.leave_applier_name);
 
         }
     }
