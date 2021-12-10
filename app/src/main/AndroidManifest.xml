@@ -43,7 +43,8 @@
             android:exported="false" />
         <activity
             android:name=".SendMail"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".UpdateEmployee"
             android:exported="false"

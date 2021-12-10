@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                     LinearLayout linearLayout = new LinearLayout(this);
                     final EditText email_ = new EditText(this);
                     // write the email using which you registered
-                    email_.setText("Email");
+                    email_.setHint("Email");
                     email_.setMinEms(16);
                     email_.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                     linearLayout.addView(email_);
